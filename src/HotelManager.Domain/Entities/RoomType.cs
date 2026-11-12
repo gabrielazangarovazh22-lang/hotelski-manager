@@ -1,0 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HotelManager.Domain.Entities;
+
+public class RoomType
+{
+    public int Id { get; set; }
+
+    [Required]
+    [MaxLength(50)]
+    public string Name { get; set; } = string.Empty;
+
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal BasePricePerNight { get; set; }
+
+    [Range(1, 20)]
+    public int Capacity { get; set; }
+
+    public ICollection<Room> Rooms { get; set; } = new List<Room>();
+}
